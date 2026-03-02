@@ -1,216 +1,232 @@
 """
-Pipeline ETL para análise de cibersegurança
-Arquitetura: Bronze → Silver → Gold
-Dados públicos: OWASP Top 10 / CISA KEV
+Pipeline ETL para análise de vulnerabilidades CISA KEV
+Arquitetura Medalhão: Bronze → Silver → Gold
+Dados reais do catálogo de vulnerabilidades exploradas
 """
 
 import pandas as pd
 import numpy as np
-import requests
-import os
-from datetime import datetime
-import json
 from pathlib import Path
+from datetime import datetime
+import warnings
+warnings.filterwarnings('ignore')
 
-class SecurityAnalyticsETL:
+class CisaKEVAnalyzer:
     """
-    Pipeline completo com arquitetura medalhão
-    Demonstra Pandas avançado + conceitos Snowflake
+    Pipeline completo de análise de vulnerabilidades CISA KEV
+    Demonstra técnicas avançadas de Pandas + conceitos Snowflake
     """
     
-    def __init__(self, raw_data_path="data/raw", processed_path="data/processed", gold_path="data/gold"):
-        self.raw_path = Path(raw_data_path)
-        self.processed_path = Path(processed_path)
-        self.gold_path = Path(gold_path)
+    def __init__(self, data_path="data/raw/known_exploited_vulnerabilities.csv"):
+        self.data_path = Path(data_path)
+        self.base_dir = Path(__file__).parent.parent
         
-        # Criar diretórios se não existirem
-        for path in [self.raw_path, self.processed_path, self.gold_path]:
-            path.mkdir(parents=True, exist_ok=True)
+        # Criar diretórios
+        for dir_name in ['data/raw', 'data/processed', 'data/gold', 'outputs']:
+            (self.base_dir / dir_name).mkdir(parents=True, exist_ok=True)
         
         self.bronze_df = None
         self.silver_df = None
         self.gold_dfs = {}
     
-    def extract_from_cisa(self):
+    def extract_bronze(self):
         """
-        Extrai dados da CISA Known Exploited Vulnerabilities (API pública)
-        Fonte: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+        Camada BRONZE: dados brutos como estão
         """
-        print("📥 Extraindo dados da CISA KEV...")
+        print("\n" + "="*60)
+        print("📥 CAMADA BRONZE: Extraindo dados brutos")
+        print("="*60)
         
-        # URL da API pública da CISA
-        url = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+        # Carregar CSV
+        df = pd.read_csv(self.data_path)
         
-        try:
-            response = requests.get(url)
-            response.raise_for_status()
-            data = response.json()
-            
-            # Converter para DataFrame
-            df = pd.DataFrame(data['vulnerabilities'])
-            
-            # Adicionar metadados
-            df['data_extracao'] = datetime.now()
-            df['fonte'] = 'CISA KEV'
-            
-            # Salvar camada BRONZE (dados brutos)
-            bronze_path = self.raw_path / f"cisa_kev_{datetime.now().strftime('%Y%m%d')}.parquet"
-            df.to_parquet(bronze_path, index=False)
-            
-            self.bronze_df = df
-            print(f"   ✅ Extraídos {len(df)} registros")
-            print(f"   💾 Salvos em: {bronze_path}")
-            
-            return df
-            
-        except Exception as e:
-            print(f"   ❌ Erro na extração: {e}")
-            # Fallback: dados simulados para demonstração
-            return self._generate_sample_data()
-    
-    def _generate_sample_data(self):
-        """
-        Gera dados simulados para demonstração (caso a API falhe)
-        """
-        print("   ⚠️ Usando dados simulados para demonstração")
-        
-        np.random.seed(42)
-        n_records = 1000
-        
-        data = {
-            'cve_id': [f'CVE-2024-{i:04d}' for i in range(1, n_records+1)],
-            'vendor_project': np.random.choice(['Microsoft', 'Adobe', 'Google', 'Apple', 'Linux'], n_records),
-            'product': np.random.choice(['Windows', 'Acrobat', 'Chrome', 'iOS', 'Kernel'], n_records),
-            'vulnerability_name': np.random.choice(['RCE', 'XSS', 'SQLi', 'PrivEsc', 'DoS'], n_records),
-            'date_added': pd.date_range(start='2024-01-01', periods=n_records, freq='D'),
-            'due_date': pd.date_range(start='2024-02-01', periods=n_records, freq='D'),
-            'required_action': np.random.choice(['Patch', 'Mitigate', 'Monitor'], n_records),
-            'known_ransomware_campaign_use': np.random.choice(['Known', 'Unknown'], n_records, p=[0.3, 0.7]),
-            'score_cvss': np.random.uniform(4.0, 10.0, n_records).round(1),
-            'attack_vector': np.random.choice(['Network', 'Adjacent', 'Local', 'Physical'], n_records),
-            'privileges_required': np.random.choice(['None', 'Low', 'High'], n_records),
-            'user_interaction': np.random.choice(['None', 'Required'], n_records)
-        }
-        
-        df = pd.DataFrame(data)
-        df['data_extracao'] = datetime.now()
-        df['fonte'] = 'SIMULADO_CISA'
-        
-        bronze_path = self.raw_path / f"sample_simulado.parquet"
+        # Salvar cópia dos dados brutos
+        bronze_path = self.base_dir / 'data/raw' / 'bronze_cisa_kev.parquet'
         df.to_parquet(bronze_path, index=False)
         
         self.bronze_df = df
-        return df
+        
+        print(f"   ✅ Registros carregados: {len(df):,}")
+        print(f"   ✅ Colunas: {list(df.columns)}")
+        print(f"   ✅ Período: {df['dateAdded'].min()} até {df['dateAdded'].max()}")
+        print(f"   💾 Salvos em: {bronze_path}")
+        
+        return self
     
     def transform_to_silver(self):
         """
-        Camada SILVER: Limpeza, padronização e enriquecimento
+        Camada SILVER: limpeza, padronização e enriquecimento
+        Técnicas AVANÇADAS de Pandas demonstradas
         """
-        print("\n🔨 Transformando para camada SILVER...")
+        print("\n" + "="*60)
+        print("🔨 CAMADA SILVER: Transformando dados")
+        print("="*60)
         
         if self.bronze_df is None:
-            raise ValueError("Execute extract primeiro!")
+            raise ValueError("Execute extract_bronze() primeiro!")
         
         df = self.bronze_df.copy()
         
-        # === TÉCNICAS AVANÇADAS DE PANDAS ===
+        # === 1. PADRONIZAÇÃO DE COLUNAS ===
+        print("\n   📋 Padronizando colunas...")
+        df.columns = [col.lower() for col in df.columns]
         
-        # 1. Padronizar nomes de colunas
-        df.columns = (df.columns
-                      .str.lower()
-                      .str.replace(' ', '_')
-                      .str.replace('-', '_'))
+        # Mapeamento para nomes mais legíveis
+        column_map = {
+            'cveid': 'cve_id',
+            'vendorproject': 'vendor',
+            'product': 'product',
+            'vulnerabilityname': 'vuln_name',
+            'dateadded': 'date_added',
+            'shortdescription': 'description',
+            'requiredaction': 'required_action',
+            'duedate': 'due_date',
+            'knownransomwarecampaignuse': 'ransomware_known',
+            'notes': 'notes',
+            'cwes': 'cwe_list'
+        }
+        df = df.rename(columns=column_map)
         
-        # 2. Tratar datas
-        if 'date_added' in df.columns:
-            df['date_added'] = pd.to_datetime(df['date_added'])
-            df['year_added'] = df['date_added'].dt.year
-            df['month_added'] = df['date_added'].dt.month
-            df['quarter_added'] = df['date_added'].dt.quarter
-            df['days_since_added'] = (datetime.now() - df['date_added']).dt.days
+        # === 2. TRATAMENTO DE DATAS (TÉCNICA AVANÇADA) ===
+        print("   📅 Processando datas...")
+        df['date_added'] = pd.to_datetime(df['date_added'])
+        df['due_date'] = pd.to_datetime(df['due_date'], errors='coerce')
         
-        # 3. TRANSFORM: criar coluna com média do grupo (sem reduzir dados)
-        df['avg_score_by_vendor'] = df.groupby('vendor_project')['score_cvss'].transform('mean')
+        # Feature engineering temporal
+        df['year_added'] = df['date_added'].dt.year
+        df['month_added'] = df['date_added'].dt.month
+        df['quarter_added'] = df['date_added'].dt.quarter
+        df['week_added'] = df['date_added'].dt.isocalendar().week
+        df['day_of_week'] = df['date_added'].dt.day_name()
+        df['days_to_due'] = (df['due_date'] - df['date_added']).dt.days
+        df['days_since_added'] = (pd.Timestamp.now() - df['date_added']).dt.days
         
-        # 4. TRANSFORM: rank dentro de cada grupo (window function)
-        df['rank_by_vendor'] = df.groupby('vendor_project')['score_cvss'].rank(
-            method='dense', 
-            ascending=False
-        )
+        # === 3. PROCESSAMENTO DE CWE (TÉCNICA AVANÇADA) ===
+        print("   🔧 Processando classificações CWE...")
         
-        # 5. Classificação customizada com APPLY
+        # Extrair CWE principal (primeiro código)
+        df['primary_cwe'] = df['cwe_list'].str.split(',').str[0].str.strip()
+        
+        # Contar número de CWEs por vulnerabilidade
+        df['cwe_count'] = df['cwe_list'].str.count(',') + 1
+        df['cwe_count'] = df['cwe_count'].fillna(0).astype(int)
+        
+        # === 4. CLASSIFICAÇÃO DE RISCO (TRANSFORM COM GROUPBY) ===
+        print("   ⚠️ Classificando níveis de risco...")
+        
+        # TÉCNICA 1: transform com groupby (adiciona média sem reduzir linhas)
+        df['avg_days_to_due_by_vendor'] = df.groupby('vendor')['days_to_due'].transform('mean').round(0)
+        
+        # TÉCNICA 2: rank por vendor (window function)
+        df['rank_by_vendor'] = df.groupby('vendor')['days_since_added'].rank(
+            method='dense', ascending=False
+        ).astype(int)
+        
+        # TÉCNICA 3: classificação customizada com apply
         def classify_risk(row):
-            if row['score_cvss'] >= 9.0 and row['known_ransomware_campaign_use'] == 'Known':
+            """Classifica risco baseado em ransomware e tempo"""
+            if row['ransomware_known'] == 'Known':
                 return 'CRITICAL'
-            elif row['score_cvss'] >= 7.0:
+            elif row['days_since_added'] < 30:
                 return 'HIGH'
-            elif row['score_cvss'] >= 4.0:
+            elif row['days_since_added'] < 90:
                 return 'MEDIUM'
             else:
                 return 'LOW'
         
         df['risk_level'] = df.apply(classify_risk, axis=1)
         
-        # 6. One-hot encoding para variáveis categóricas
-        attack_dummies = pd.get_dummies(df['attack_vector'], prefix='vector')
-        df = pd.concat([df, attack_dummies], axis=1)
+        # === 5. FEATURE ENGINEERING AVANÇADO ===
+        print("   🎯 Criando features adicionais...")
         
-        # 7. Feature engineering avançado
-        df['is_critical_vendor'] = df['vendor_project'].isin(['Microsoft', 'Adobe']).astype(int)
-        df['score_binned'] = pd.cut(df['score_cvss'], 
-                                     bins=[0, 4, 7, 9, 10],
-                                     labels=['Baixo', 'Médio', 'Alto', 'Crítico'])
+        # TÉCNICA 4: categorização de tempo
+        df['time_category'] = pd.cut(
+            df['days_since_added'],
+            bins=[0, 30, 90, 180, 365, float('inf')],
+            labels=['< 1 mês', '1-3 meses', '3-6 meses', '6-12 meses', '> 1 ano']
+        )
         
-        # 8. Rolling window (média móvel por severidade)
-        if len(df) > 30:
-            df_sorted = df.sort_values('date_added')
-            df['rolling_avg_score_30d'] = (
-                df_sorted['score_cvss']
-                .rolling(window=30, min_periods=1)
-                .mean()
-                .values
-            )
+        # TÉCNICA 5: flags booleanas
+        df['is_critical'] = df['risk_level'] == 'CRITICAL'
+        df['is_ransomware'] = df['ransomware_known'] == 'Known'
+        df['is_recent'] = df['days_since_added'] < 30
+        
+        # TÉCNICA 6: extrair palavras-chave da descrição (exemplo)
+        keywords = ['remote', 'execute', 'privilege', 'bypass', 'memory']
+        for kw in keywords:
+            df[f'has_{kw}'] = df['description'].str.lower().str.contains(kw, na=False).astype(int)
+        
+        # === 6. SIMULAÇÃO DE SCORE CVSS (baseado em características) ===
+        print("   📊 Simulando scores CVSS...")
+        
+        # Base: 5.0
+        df['cvss_score'] = 5.0
+        
+        # Ajustes baseados em características
+        df.loc[df['ransomware_known'] == 'Known', 'cvss_score'] += 3.0
+        df.loc[df['description'].str.contains('remote code|execute', case=False, na=False), 'cvss_score'] += 1.5
+        df.loc[df['description'].str.contains('privilege|escalation', case=False, na=False), 'cvss_score'] += 1.0
+        df.loc[df['description'].str.contains('bypass', case=False, na=False), 'cvss_score'] += 0.5
+        
+        # Limitar entre 0 e 10
+        df['cvss_score'] = df['cvss_score'].clip(0, 10).round(1)
+        
+        # Categorizar CVSS
+        df['cvss_severity'] = pd.cut(
+            df['cvss_score'],
+            bins=[0, 4, 7, 9, 10],
+            labels=['LOW', 'MEDIUM', 'HIGH', 'CRITICAL']
+        )
         
         # Salvar camada SILVER
-        silver_path = self.processed_path / f"silver_vulnerabilities.parquet"
+        silver_path = self.base_dir / 'data/processed' / 'silver_vulnerabilities.parquet'
         df.to_parquet(silver_path, index=False)
         
         self.silver_df = df
-        print(f"   ✅ Silver gerada: {len(df)} registros, {len(df.columns)} colunas")
+        
+        print(f"\n   ✅ Silver gerada: {len(df):,} registros, {len(df.columns)} colunas")
         print(f"   💾 Salvos em: {silver_path}")
         
-        return df
+        return self
     
     def build_gold_layer(self):
         """
-        Camada GOLD: Agregações de negócio para relatórios
+        Camada GOLD: agregações estratégicas para negócio
+        Múltiplas visões dos dados
         """
-        print("\n📊 Construindo camada GOLD...")
+        print("\n" + "="*60)
+        print("📊 CAMADA GOLD: Construindo visões de negócio")
+        print("="*60)
         
         if self.silver_df is None:
-            raise ValueError("Execute transform primeiro!")
+            raise ValueError("Execute transform_to_silver() primeiro!")
         
         df = self.silver_df
         
-        # === GOLD 1: Resumo por vendor ===
-        gold_vendor = (df.groupby('vendor_project')
+        # === GOLD 1: Resumo por Vendor ===
+        print("\n   🏢 Gold 1: Análise por fabricante...")
+        gold_vendor = (df.groupby('vendor')
                        .agg({
                            'cve_id': 'count',
-                           'score_cvss': ['mean', 'max', 'std'],
-                           'risk_level': lambda x: (x == 'CRITICAL').sum(),
-                           'known_ransomware_campaign_use': lambda x: (x == 'Known').sum()
+                           'cvss_score': ['mean', 'max', 'std'],
+                           'is_critical': 'sum',
+                           'is_ransomware': 'sum',
+                           'days_to_due': 'mean',
+                           'vendor': 'first'  # dummy para contar
                        })
                        .round(2))
         
         # Achatar colunas multinível
         gold_vendor.columns = ['_'.join(col).strip() for col in gold_vendor.columns.values]
         gold_vendor = gold_vendor.reset_index()
-        gold_vendor['pct_critical'] = (gold_vendor['risk_level_<lambda_0>'] / 
-                                        gold_vendor['cve_id_count'] * 100).round(1)
+        gold_vendor['critical_percent'] = (gold_vendor['is_critical_sum'] / 
+                                            gold_vendor['cve_id_count'] * 100).round(1)
+        gold_vendor = gold_vendor.sort_values('cve_id_count', ascending=False)
         
         self.gold_dfs['vendor_summary'] = gold_vendor
         
-        # === GOLD 2: Análise temporal ===
+        # === GOLD 2: Análise Temporal ===
+        print("   📅 Gold 2: Tendências temporais...")
         gold_temporal = pd.pivot_table(
             df,
             values='cve_id',
@@ -223,37 +239,70 @@ class SecurityAnalyticsETL:
         )
         self.gold_dfs['temporal_analysis'] = gold_temporal
         
-        # === GOLD 3: Top vulnerabilidades críticas ===
-        gold_top_critical = (df[df['risk_level'] == 'CRITICAL']
-                             .nlargest(10, 'score_cvss')[['cve_id', 'vendor_project', 
-                                                           'product', 'score_cvss', 
-                                                           'attack_vector']])
+        # === GOLD 3: Top Vulnerabilidades Críticas ===
+        print("   🔥 Gold 3: Top vulnerabilidades críticas...")
+        gold_top_critical = (df[df['is_critical']]
+                             .nlargest(15, 'cvss_score')[['cve_id', 'vendor', 'product', 
+                                                           'vuln_name', 'cvss_score', 
+                                                           'days_since_added']])
         self.gold_dfs['top_critical'] = gold_top_critical
         
-        # === GOLD 4: Matriz de correlação (técnica avançada) ===
-        numeric_cols = df.select_dtypes(include=[np.number]).columns
-        if len(numeric_cols) > 1:
-            corr_matrix = df[numeric_cols].corr()
-            self.gold_dfs['correlation_matrix'] = corr_matrix
+        # === GOLD 4: Análise de Ransomware ===
+        print("   💀 Gold 4: Vulnerabilidades usadas em ransomware...")
+        gold_ransomware = (df[df['is_ransomware']]
+                           .groupby('vendor')
+                           .agg({
+                               'cve_id': 'count',
+                               'cvss_score': 'mean',
+                               'product': lambda x: ', '.join(x.head(3))
+                           })
+                           .round(1)
+                           .sort_values('cve_id', ascending=False))
+        self.gold_dfs['ransomware_analysis'] = gold_ransomware
+        
+        # === GOLD 5: Matriz de Correlação ===
+        print("   🔗 Gold 5: Correlações entre métricas...")
+        numeric_cols = ['cvss_score', 'days_to_due', 'days_since_added', 
+                        'cwe_count', 'is_critical', 'is_ransomware']
+        corr_matrix = df[numeric_cols].corr()
+        self.gold_dfs['correlation_matrix'] = corr_matrix
+        
+        # === GOLD 6: Análise de CWEs mais comuns ===
+        print("   📋 Gold 6: Top CWEs...")
+        # Explodir lista de CWEs
+        cwes_exploded = df.assign(cwe=df['cwe_list'].str.split(',')).explode('cwe')
+        cwes_exploded['cwe'] = cwes_exploded['cwe'].str.strip()
+        
+        gold_cwes = (cwes_exploded['cwe']
+                     .value_counts()
+                     .head(20)
+                     .reset_index())
+        gold_cwes.columns = ['cwe', 'count']
+        self.gold_dfs['cwe_ranking'] = gold_cwes
         
         # Salvar todas as camadas Gold
+        gold_dir = self.base_dir / 'data/gold'
         for name, gold_df in self.gold_dfs.items():
-            gold_path = self.gold_path / f"gold_{name}.csv"
+            # Tratar MultiIndex se necessário
             if isinstance(gold_df, pd.DataFrame):
+                if isinstance(gold_df.columns, pd.MultiIndex):
+                    gold_df.columns = ['_'.join(col).strip() for col in gold_df.columns.values]
+                
+                gold_path = gold_dir / f'gold_{name}.csv'
                 gold_df.to_csv(gold_path)
                 print(f"   💾 Gold '{name}' salva: {gold_path}")
         
-        return self.gold_dfs
+        return self
     
     def run_pipeline(self):
         """
         Executa pipeline completo
         """
-        print("="*60)
-        print("🚀 INICIANDO PIPELINE DE ANÁLISE DE SEGURANÇA")
+        print("\n" + "="*60)
+        print("🚀 INICIANDO PIPELINE DE ANÁLISE CISA KEV")
         print("="*60)
         
-        self.extract_from_cisa()
+        self.extract_bronze()
         self.transform_to_silver()
         self.build_gold_layer()
         
@@ -264,7 +313,7 @@ class SecurityAnalyticsETL:
         return self
 
 
-# Execução standalone
+# Execução
 if __name__ == "__main__":
-    pipeline = SecurityAnalyticsETL()
-    pipeline.run_pipeline()
+    analyzer = CisaKEVAnalyzer()
+    analyzer.run_pipeline()

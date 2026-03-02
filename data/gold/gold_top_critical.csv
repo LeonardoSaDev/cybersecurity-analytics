@@ -1,0 +1,16 @@
+,cve_id,vendor,product,vuln_name,cvss_score,days_since_added
+11,CVE-2026-1731,BeyondTrust,Remote Support (RS) and Privileged Remote Access (PRA),BeyondTrust Remote Support (RS) and Privileged Remote Access (PRA) OS Command Injection Vulnerability,10.0,17
+145,CVE-2025-49704,Microsoft,SharePoint,Microsoft SharePoint Code Injection Vulnerability,10.0,223
+147,CVE-2025-53770,Microsoft,SharePoint,Microsoft SharePoint Deserialization of Untrusted Data Vulnerability,10.0,225
+284,CVE-2023-48365,Qlik,Sense,Qlik Sense HTTP Tunneling Vulnerability,10.0,413
+300,CVE-2024-50623,Cleo,Multiple Products,Cleo Multiple Products Unrestricted File Upload Vulnerability,10.0,444
+431,CVE-2024-3400,Palo Alto Networks,PAN-OS,Palo Alto Networks PAN-OS Command Injection Vulnerability,10.0,689
+436,CVE-2023-24955,Microsoft,SharePoint Server,Microsoft SharePoint Server Code Injection Vulnerability,10.0,706
+467,CVE-2024-21887,Ivanti,Connect Secure and Policy Secure,Ivanti Connect Secure and Policy Secure Command Injection Vulnerability,10.0,782
+480,CVE-2023-41265,Qlik,Sense,Qlik Sense HTTP Tunneling Vulnerability,10.0,816
+506,CVE-2023-46747,F5,BIG-IP Configuration Utility,F5 BIG-IP Configuration Utility Authentication Bypass Vulnerability,10.0,853
+519,CVE-2023-42793,JetBrains,TeamCity,JetBrains TeamCity Authentication Bypass Vulnerability,10.0,880
+661,CVE-2022-41080,Microsoft,Exchange Server,Microsoft Exchange Server Privilege Escalation Vulnerability,10.0,1147
+684,CVE-2020-3433,Cisco,AnyConnect Secure,Cisco AnyConnect Secure Mobility Client for Windows DLL Hijacking Vulnerability,10.0,1225
+737,CVE-2022-37042,Synacor,Zimbra Collaboration Suite (ZCS),Synacor Zimbra Collaboration Suite (ZCS) Authentication Bypass Vulnerability,10.0,1299
+752,CVE-2022-30190,Microsoft,Windows,Microsoft Windows Support Diagnostic Tool (MSDT) Remote Code Execution Vulnerability,10.0,1357

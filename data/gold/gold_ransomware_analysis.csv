@@ -1,0 +1,73 @@
+vendor,cve_id,cvss_score,product
+Microsoft,102,9.2,"SharePoint, SharePoint, SharePoint"
+Fortinet,13,8.7,"FortiOS, FortiOS and FortiProxy, FortiOS and FortiProxy"
+Ivanti,12,9.0,"Connect Secure, Policy Secure, and ZTA Gateways, Connect Secure, Policy Secure, and ZTA Gateways, Endpoint Manager Cloud Service Appliance (EPM CSA)"
+Oracle,11,8.5,"E-Business Suite, E-Business Suite, E-Business Suite"
+Adobe,10,8.6,"ColdFusion, ColdFusion, ColdFusion"
+SonicWall,10,8.5,"SonicOS, SMA1000 Appliances, SonicOS"
+QNAP,9,8.0,"Photo Station, Photo Station, Photo Station"
+VMware,9,9.2,"ESXi, ESXi, Workspace ONE Access and Identity Manager"
+Atlassian,8,8.9,"Confluence Data Center and Server, Confluence Data Center and Server, Confluence Data Center and Server"
+Apache,7,9.3,"ActiveMQ, Log4j2, Tomcat"
+Citrix,7,8.4,"NetScaler ADC and Gateway, NetScaler ADC and NetScaler Gateway, NetScaler ADC and NetScaler Gateway"
+Palo Alto Networks,5,9.1,"PAN-OS, PAN-OS, PAN-OS"
+Cisco,5,8.6,"Adaptive Security Appliance (ASA) and Firepower Threat Defense (FTD), Adaptive Security Appliance and Firepower Threat Defense, AnyConnect Secure"
+Mitel,5,9.1,"MiCollab, MiCollab, MiVoice Connect"
+Synacor,5,9.0,"Zimbra Collaboration Suite (ZCS), Zimbra Collaboration Suite (ZCS), Zimbra Collaboration Suite (ZCS)"
+Accellion,4,8.0,"FTA, FTA, FTA"
+GIGABYTE,4,8.8,"Multiple Products, Multiple Products, Multiple Products"
+Progress,4,8.4,"WhatsUp Gold, WS_FTP Server, MOVEit Transfer"
+Veeam,4,8.4,"Backup & Replication, Backup & Replication, Backup & Replication"
+F5,4,9.6,"BIG-IP Configuration Utility, BIG-IP, BIG-IP"
+Qlik,3,9.3,"Sense, Sense, Sense"
+Kaseya,3,9.2,"Virtual System/Server Administrator (VSA), Virtual System/Server Administrator (VSA), Virtual System/Server Administrator (VSA)"
+RARLAB,3,9.0,"WinRAR, UnRAR, WinRAR"
+Red Hat,3,8.5,"JBoss, JBoss, JBoss Application Server"
+Veritas,3,8.5,"Backup Exec Agent, Backup Exec Agent, Backup Exec Agent"
+IBM,2,8.8,"Aspera Faspex, InfoSphere BigInsights"
+Linux,2,9.0,"Kernel, Kernel"
+Drupal,2,9.5,"Core, Drupal Core"
+SAP,2,8.0,"NetWeaver, Customer Relationship Management (CRM)"
+Zyxel,2,8.8,"Multiple Firewalls, EMG2926 Routers"
+Zoho,2,9.8,"ManageEngine, ManageEngine"
+SmarterTools,2,8.2,"SmarterMail, SmarterMail"
+JetBrains,2,9.2,"TeamCity, TeamCity"
+D-Link,2,8.8,"Multiple Routers, DNS-320 Storage Device"
+Cleo,2,9.8,"Multiple Products, Multiple Products"
+CyberPersons,2,9.0,"CyberPanel, CyberPanel"
+Fortra,2,8.8,"GoAnywhere MFT, GoAnywhere MFT"
+BeyondTrust,1,10.0,Remote Support (RS) and Privileged Remote Access (PRA)
+BQE,1,9.5,BillQuick Web Suite
+Array Networks ,1,9.5,AG/vxAG ArrayOS
+Check Point,1,8.0,Quantum Security Gateways
+Netwrix,1,9.5,Auditor
+NextGen Healthcare,1,9.5,Mirth Connect
+Meta,1,9.5,React Server Components
+Intel,1,8.0,Ethernet Diagnostics Driver for Windows
+GitLab,1,9.5,Community and Enterprise Editions
+Mozilla,1,8.0,Firefox
+Laravel,1,9.5,Ignition
+Dasan,1,10.0,Gigabit Passive Optical Network (GPON) Routers
+DotNetNuke (DNN),1,9.5,DotNetNuke (DNN)
+ConnectWise,1,8.5,ScreenConnect
+CrushFTP,1,8.5,CrushFTP
+Exim,1,9.5,Exim
+ForgeRock,1,9.5,Access Management (AM)
+Jenkins,1,8.0,Jenkins Command Line Interface (CLI)
+Quest,1,9.5,KACE System Management Appliance
+SolarWinds,1,9.5,Serv-U
+Sitecore,1,9.5,XP
+SimpleHelp ,1,8.0,SimpleHelp
+Samba,1,9.5,Samba
+PaperCut,1,8.5,MF/NG
+PHP Group,1,8.5,PHP
+PHP,1,9.5,FastCGI Process Manager (FPM)
+Sophos,1,9.5,SFOS
+VMware Tanzu,1,9.5,Spring Data Commons
+TerraMaster,1,9.5,TerraMaster OS
+Telerik,1,9.5,User Interface (UI) for ASP.NET AJAX
+SysAid,1,8.0,SysAid Server
+WebRTC,1,8.0,WebRTC
+WSO2,1,9.5,Multiple Products
+ZK Framework,1,8.0,AuUploader
+dotCMS,1,9.5,dotCMS

@@ -1,0 +1,253 @@
+,vendor,cve_id_count,cvss_score_mean,cvss_score_max,cvss_score_std,is_critical_sum,is_ransomware_sum,days_to_due_mean,vendor_first,critical_percent
+112,Microsoft,361,7.0,10.0,1.46,102,102,51.62,Microsoft,28.3
+13,Apple,87,5.75,7.5,0.99,0,0,36.1,Apple,0.0
+31,Cisco,85,6.15,10.0,1.22,5,5,34.24,Cisco,5.9
+7,Adobe,76,6.36,9.5,1.14,10,10,36.53,Adobe,13.2
+74,Google,68,5.22,6.5,0.52,0,0,32.34,Google,0.0
+138,Oracle,42,6.37,9.5,1.44,11,11,59.1,Oracle,26.2
+12,Apache,38,6.66,9.5,1.47,7,7,79.05,Apache,18.4
+88,Ivanti,31,7.0,10.0,1.73,12,12,64.77,Ivanti,38.7
+222,VMware,26,7.15,10.0,1.7,9,9,50.15,VMware,34.6
+41,D-Link,25,5.92,9.5,1.12,2,2,40.2,D-Link,8.0
+63,Fortinet,24,7.54,9.5,1.47,13,13,50.38,Fortinet,54.2
+103,Linux,24,6.23,9.0,0.96,2,2,27.71,Linux,8.3
+32,Citrix,21,6.64,9.5,1.53,7,7,64.19,Citrix,33.3
+201,Synacor,16,6.53,10.0,1.87,5,5,30.56,Synacor,31.2
+11,Android,16,5.94,7.5,0.6,0,0,41.0,Android,0.0
+192,SonicWall,15,7.57,9.5,1.49,10,10,28.4,SonicWall,66.7
+177,Samsung,14,5.57,6.5,0.7,0,0,21.0,Samsung,0.0
+172,SAP,14,5.82,8.0,1.12,2,2,89.57,SAP,14.3
+118,Mozilla,13,5.69,8.0,0.99,1,1,56.85,Mozilla,7.7
+19,Atlassian,13,7.85,9.5,1.68,8,8,67.62,Atlassian,61.5
+145,Palo Alto Networks,13,6.73,10.0,2.03,5,5,32.23,Palo Alto Networks,38.5
+244,Zyxel,12,6.62,9.5,1.19,2,2,34.33,Zyxel,16.7
+156,QNAP,11,7.73,8.0,0.61,9,9,18.45,QNAP,81.8
+159,Qualcomm,11,5.0,5.0,0.0,0,0,49.55,Qualcomm,0.0
+215,Trend Micro,11,6.05,6.5,0.61,0,0,92.45,Trend Micro,0.0
+170,Roundcube,11,5.27,6.5,0.61,0,0,35.55,Roundcube,0.0
+16,Arm,9,5.89,6.0,0.33,0,0,18.67,Arm,0.0
+243,Zoho,9,7.0,10.0,1.68,2,2,53.44,Zoho,22.2
+189,SolarWinds,9,6.22,9.5,1.44,1,1,51.0,SolarWinds,11.1
+153,Progress,8,6.94,9.5,1.68,4,4,61.0,Progress,50.0
+121,NETGEAR,8,6.0,7.0,0.85,0,0,80.88,NETGEAR,0.0
+93,Juniper,8,5.31,6.5,0.59,0,0,10.38,Juniper,0.0
+166,Red Hat,7,7.29,9.5,1.25,3,3,67.0,Red Hat,42.9
+115,Mitel,7,8.14,9.5,1.77,5,5,21.0,Mitel,71.4
+81,IBM,7,6.79,9.5,1.52,2,2,135.29,IBM,28.6
+193,Sophos,7,7.0,9.5,1.12,1,1,43.86,Sophos,14.3
+59,F5,6,8.42,10.0,1.91,4,4,45.33,F5,66.7
+90,Jenkins,6,6.17,8.0,1.21,1,1,47.67,Jenkins,16.7
+204,TP-Link,6,5.33,6.5,0.61,0,0,21.0,TP-Link,0.0
+68,GNU,5,6.5,7.5,0.71,0,0,85.0,GNU,0.0
+57,Exim,5,6.7,9.5,1.68,1,1,83.6,Exim,20.0
+162,RARLAB,5,8.0,9.5,1.5,3,3,53.0,RARLAB,60.0
+51,DrayTek,5,6.0,6.5,0.61,0,0,53.0,DrayTek,0.0
+185,Sitecore,4,7.25,9.5,1.5,1,1,21.0,Sitecore,25.0
+64,Fortra,4,7.62,9.5,1.44,2,2,21.0,Fortra,50.0
+71,GitLab,4,6.12,9.5,2.25,1,1,19.25,GitLab,25.0
+123,Nagios,4,5.38,6.5,0.75,0,0,55.75,Nagios,0.0
+224,Veeam,4,8.38,9.5,0.75,4,4,21.0,Veeam,100.0
+3,Accellion,4,8.0,8.0,0.0,4,4,14.0,Accellion,100.0
+52,Drupal,4,7.25,9.5,2.6,2,2,101.0,Drupal,50.0
+72,Gladinet,4,5.38,6.5,0.75,0,0,21.0,Gladinet,0.0
+67,GIGABYTE,4,8.75,9.0,0.5,4,4,21.0,GIGABYTE,100.0
+229,WatchGuard,4,6.38,6.5,0.25,0,0,17.5,WatchGuard,0.0
+2,ASUS,3,5.5,6.5,0.87,0,0,21.0,ASUS,0.0
+25,Broadcom,3,6.67,7.5,0.76,0,0,21.0,Broadcom,0.0
+37,Craft CMS,3,6.0,6.5,0.87,0,0,21.0,Craft CMS,0.0
+54,Elastic,3,6.17,7.0,1.04,0,0,74.33,Elastic,0.0
+45,Dassault Systèmes,3,6.33,6.5,0.29,0,0,21.0,Dassault Systèmes,0.0
+50,DotNetNuke (DNN),3,6.5,9.5,2.6,1,1,181.0,DotNetNuke (DNN),33.3
+24,BeyondTrust,3,7.83,10.0,2.02,1,1,10.67,BeyondTrust,33.3
+178,Sangoma,3,5.83,7.0,1.04,0,0,21.0,Sangoma,0.0
+165,Realtek,3,6.0,6.5,0.87,0,0,16.33,Realtek,0.0
+175,SaltStack,3,5.17,5.5,0.29,0,0,181.0,SaltStack,0.0
+140,PHP,3,7.5,9.5,1.73,1,1,21.0,PHP,33.3
+133,OSGeo,3,6.0,6.5,0.87,0,0,21.0,OSGeo,0.0
+158,Qlik,3,9.33,10.0,1.15,3,3,21.0,Qlik,100.0
+163,Rails,3,5.0,5.0,0.0,0,0,21.0,Rails,0.0
+187,SmarterTools,3,7.67,8.5,1.04,2,2,21.0,SmarterTools,66.7
+209,TeleMessage,3,5.0,5.0,0.0,0,0,21.0,TeleMessage,0.0
+223,VMware Tanzu,3,7.0,9.5,2.29,1,1,21.0,VMware Tanzu,33.3
+96,Kentico,3,5.83,6.5,0.58,0,0,21.0,Kentico,0.0
+95,Kaseya,3,9.17,10.0,1.04,3,3,18.67,Kaseya,100.0
+109,Meta Platforms,3,5.5,6.5,0.87,0,0,21.0,Meta Platforms,0.0
+85,ImageMagick,3,5.5,6.5,0.87,0,0,127.67,ImageMagick,0.0
+39,CrushFTP,3,6.17,8.5,2.02,1,1,16.33,CrushFTP,33.3
+211,Tenda,3,6.5,6.5,0.0,0,0,125.33,Tenda,0.0
+225,Veritas,3,8.5,9.5,0.87,3,3,21.0,Veritas,100.0
+235,WordPress,3,6.0,6.5,0.87,0,0,181.0,WordPress,0.0
+202,SysAid,3,6.0,8.0,1.73,1,1,21.0,SysAid,33.3
+213,ThinkPHP,2,6.5,6.5,0.0,0,0,181.0,ThinkPHP,0.0
+203,TIBCO,2,5.0,5.0,0.0,0,0,21.0,TIBCO,0.0
+196,Sudo,2,5.5,6.0,0.71,0,0,21.0,Sudo,0.0
+210,Telerik,2,8.0,9.5,2.12,1,1,21.0,Telerik,50.0
+242,Zabbix,2,5.25,5.5,0.35,0,0,14.0,Zabbix,0.0
+169,Reolink,2,5.0,5.0,0.0,0,0,21.0,Reolink,0.0
+191,Sonatype,2,6.5,6.5,0.0,0,0,181.5,Sonatype,0.0
+144,Paessler,2,6.75,7.5,1.06,0,0,21.0,Paessler,0.0
+168,Rejetto,2,6.5,6.5,0.0,0,0,21.0,Rejetto,0.0
+221,Unraid,2,6.75,7.0,0.35,0,0,181.0,Unraid,0.0
+226,Versa,2,5.5,6.0,0.71,0,0,21.0,Versa,0.0
+251,vBulletin,2,6.5,6.5,0.0,0,0,181.0,vBulletin,0.0
+143,PTZOptics,2,6.5,7.0,0.71,0,0,21.0,PTZOptics,0.0
+116,MongoDB,2,5.75,6.5,1.06,0,0,101.5,MongoDB,0.0
+122,NUUO,2,5.0,5.0,0.0,0,0,21.0,NUUO,0.0
+119,N-able,2,5.0,5.0,0.0,0,0,7.0,N-able,0.0
+87,Intel,2,7.0,8.0,1.41,1,1,101.0,Intel,50.0
+69,GeoVision,2,6.5,6.5,0.0,0,0,21.0,GeoVision,0.0
+80,Hitachi Vantara,2,5.25,5.5,0.35,0,0,21.0,Hitachi Vantara,0.0
+77,Hewlett Packard (HP),2,6.5,6.5,0.0,0,0,21.0,Hewlett Packard (HP),0.0
+75,Grafana Labs,2,5.25,5.5,0.35,0,0,21.0,Grafana Labs,0.0
+114,MinIO,2,5.75,6.5,1.06,0,0,21.0,MinIO,0.0
+113,MikroTik,2,5.0,5.0,0.0,0,0,101.5,MikroTik,0.0
+36,ConnectWise,2,7.5,8.5,1.41,1,1,14.0,ConnectWise,50.0
+139,PEAR,2,5.0,5.0,0.0,0,0,21.0,PEAR,0.0
+136,OpenPLC,2,5.75,6.5,1.06,0,0,21.0,OpenPLC,0.0
+181,ServiceNow,2,6.5,6.5,0.0,0,0,21.0,ServiceNow,0.0
+146,PaperCut,2,7.5,8.5,1.41,1,1,21.0,PaperCut,50.0
+111,Micro Focus,2,5.75,6.5,1.06,0,0,14.0,Micro Focus,0.0
+58,EyesOfNetwork,2,5.5,6.0,0.71,0,0,181.0,EyesOfNetwork,0.0
+46,Dell,2,5.5,6.0,0.71,0,0,12.0,Dell,0.0
+40,CyberPersons,2,9.0,9.5,0.71,2,2,21.0,CyberPersons,100.0
+44,Dasan,2,8.5,10.0,2.12,1,1,21.0,Dasan,50.0
+33,Cleo,2,9.75,10.0,0.35,2,2,21.0,Cleo,100.0
+35,Commvault,2,6.5,6.5,0.0,0,0,21.0,Commvault,0.0
+82,IETF,2,5.0,5.0,0.0,0,0,21.0,IETF,0.0
+91,JetBrains,2,9.25,10.0,1.06,2,2,21.0,JetBrains,100.0
+100,Laravel,2,7.25,9.5,3.18,1,1,21.0,Laravel,50.0
+21,Aviatrix,2,6.5,6.5,0.0,0,0,17.5,Aviatrix,0.0
+8,Advantive,2,5.75,6.5,1.06,0,0,21.0,Advantive,0.0
+43,Dahua,2,5.5,5.5,0.0,0,0,21.0,Dahua,0.0
+26,CWP,2,6.5,6.5,0.0,0,0,21.0,CWP,0.0
+17,Array Networks ,2,8.0,9.5,2.12,1,1,21.0,Array Networks ,50.0
+34,Code Aurora,1,6.0,6.0,,0,0,21.0,Code Aurora,0.0
+28,ChakraCore,1,6.5,6.5,,0,0,14.0,ChakraCore,0.0
+120,NAKIVO,1,5.0,5.0,,0,0,21.0,NAKIVO,0.0
+117,Motex,1,6.5,6.5,,0,0,21.0,Motex,0.0
+110,Metabase,1,5.0,5.0,,0,0,21.0,Metabase,0.0
+108,Meta,1,9.5,9.5,,1,1,7.0,Meta,100.0
+104,Looking Glass,1,5.0,5.0,,0,0,21.0,Looking Glass,0.0
+97,Kingsoft,1,5.0,5.0,,0,0,21.0,Kingsoft,0.0
+94,Justice AV Solutions,1,5.0,5.0,,0,0,21.0,Justice AV Solutions,0.0
+92,Joomla!,1,5.0,5.0,,0,0,21.0,Joomla!,0.0
+99,Langflow,1,6.5,6.5,,0,0,21.0,Langflow,0.0
+98,LG,1,6.5,6.5,,0,0,21.0,LG,0.0
+101,Libraesva,1,5.0,5.0,,0,0,21.0,Libraesva,0.0
+102,Liferay,1,6.5,6.5,,0,0,181.0,Liferay,0.0
+106,McAfee,1,8.0,8.0,,0,0,14.0,McAfee,0.0
+105,MDaemon,1,5.0,5.0,,0,0,21.0,MDaemon,0.0
+107,MediaTek,1,6.0,6.0,,0,0,181.0,MediaTek,0.0
+89,JQuery,1,6.5,6.5,,0,0,21.0,JQuery,0.0
+73,Gogs,1,5.0,5.0,,0,0,21.0,Gogs,0.0
+76,Grandstream,1,5.0,5.0,,0,0,181.0,Grandstream,0.0
+65,FreeType,1,5.0,5.0,,0,0,21.0,FreeType,0.0
+70,Git,1,5.0,5.0,,0,0,21.0,Git,0.0
+62,ForgeRock,1,9.5,9.5,,1,1,14.0,ForgeRock,100.0
+61,FatPipe,1,5.0,5.0,,0,0,14.0,FatPipe,0.0
+66,Fuel CMS,1,5.0,5.0,,0,0,182.0,Fuel CMS,0.0
+60,FXC,1,6.5,6.5,,0,0,21.0,FXC,0.0
+83,IGEL,1,5.5,5.5,,0,0,21.0,IGEL,0.0
+84,Ignite Realtime,1,5.0,5.0,,0,0,21.0,Ignite Realtime,0.0
+78,Hewlett Packard Enterprise (HPE),1,6.5,6.5,,0,0,21.0,Hewlett Packard Enterprise (HPE),0.0
+79,Hikvision,1,5.0,5.0,,0,0,14.0,Hikvision,0.0
+86,InduSoft,1,6.5,6.5,,0,0,21.0,InduSoft,0.0
+53,Edimax,1,6.5,6.5,,0,0,21.0,Edimax,0.0
+55,Embedthis,1,6.5,6.5,,0,0,182.0,Embedthis,0.0
+56,Erlang,1,6.5,6.5,,0,0,21.0,Erlang,0.0
+27,Cacti,1,6.5,6.5,,0,0,21.0,Cacti,0.0
+20,Audinate,1,6.5,6.5,,0,0,21.0,Audinate,0.0
+22,BQE,1,9.5,9.5,,1,1,14.0,BQE,100.0
+23,Barracuda Networks,1,5.0,5.0,,0,0,21.0,Barracuda Networks,0.0
+30,Checkbox,1,6.5,6.5,,0,0,21.0,Checkbox,0.0
+29,Check Point,1,8.0,8.0,,1,1,21.0,Check Point,100.0
+15,Arcserve,1,5.0,5.0,,0,0,21.0,Arcserve,0.0
+14,Arcadyan,1,5.5,5.5,,0,0,14.0,Arcadyan,0.0
+6,Adminer,1,5.0,5.0,,0,0,21.0,Adminer,0.0
+1,AMI,1,5.5,5.5,,0,0,21.0,AMI,0.0
+0,7-Zip,1,7.0,7.0,,0,0,21.0,7-Zip,0.0
+4,Acclaim Systems,1,6.5,6.5,,0,0,21.0,Acclaim Systems,0.0
+9,Alcatel,1,6.5,6.5,,0,0,21.0,Alcatel,0.0
+5,Acronis,1,6.5,6.5,,0,0,21.0,Acronis,0.0
+18,Artifex,1,5.5,5.5,,0,0,21.0,Artifex,0.0
+10,Amcrest,1,6.5,6.5,,0,0,181.0,Amcrest,0.0
+42,D-Link and TRENDnet,1,6.5,6.5,,0,0,21.0,D-Link and TRENDnet,0.0
+38,Crestron,1,6.5,6.5,,0,0,21.0,Crestron,0.0
+47,Delta Electronics,1,5.0,5.0,,0,0,21.0,Delta Electronics,0.0
+49,Docker,1,6.0,6.0,,0,0,181.0,Docker,0.0
+48,Digiever,1,5.0,5.0,,0,0,21.0,Digiever,0.0
+150,Plex,1,6.5,6.5,,0,0,21.0,Plex,0.0
+149,PlaySMS,1,6.5,6.5,,0,0,181.0,PlaySMS,0.0
+151,Prettier,1,6.5,6.5,,0,0,21.0,Prettier,0.0
+155,Pulse Secure,1,5.0,5.0,,0,0,184.0,Pulse Secure,0.0
+154,ProjectSend,1,5.0,5.0,,0,0,21.0,ProjectSend,0.0
+152,Primetek,1,6.5,6.5,,0,0,181.0,Primetek,0.0
+131,Novi Survey,1,6.5,6.5,,0,0,21.0,Novi Survey,0.0
+124,Netis,1,6.5,6.5,,0,0,181.0,Netis,0.0
+125,Netwrix,1,9.5,9.5,,1,1,21.0,Netwrix,100.0
+126,NextGen Healthcare,1,9.5,9.5,,1,1,21.0,NextGen Healthcare,100.0
+130,Notepad++,1,7.5,7.5,,0,0,21.0,Notepad++,0.0
+186,Smartbedded,1,6.0,6.0,,0,0,21.0,Smartbedded,0.0
+184,SimpleHelp ,1,8.0,8.0,,1,1,21.0,SimpleHelp ,100.0
+182,Siemens,1,6.0,6.0,,0,0,21.0,Siemens,0.0
+183,Sierra Wireless,1,5.0,5.0,,0,0,21.0,Sierra Wireless,0.0
+180,ScienceLogic,1,5.0,5.0,,0,0,21.0,ScienceLogic,0.0
+173,SIMalliance,1,6.5,6.5,,0,0,181.0,SIMalliance,0.0
+176,Samba,1,9.5,9.5,,1,1,21.0,Samba,100.0
+179,Schneider Electric,1,5.0,5.0,,0,0,21.0,Schneider Electric,0.0
+174,SKYSEA,1,6.5,6.5,,0,0,21.0,SKYSEA,0.0
+164,React Native Community,1,6.5,6.5,,0,0,21.0,React Native Community,0.0
+157,QNAP Systems,1,6.0,6.0,,0,0,21.0,QNAP Systems,0.0
+161,Quest,1,9.5,9.5,,1,1,21.0,Quest,100.0
+160,Qualitia,1,6.5,6.5,,0,0,21.0,Qualitia,0.0
+171,Ruckus Wireless,1,6.5,6.5,,0,0,21.0,Ruckus Wireless,0.0
+167,Redis,1,6.5,6.5,,0,0,21.0,Redis,0.0
+127,Nice,1,6.5,6.5,,0,0,21.0,Nice,0.0
+137,OpenSSL,1,5.0,5.0,,0,0,21.0,OpenSSL,0.0
+132,Npm package,1,6.5,6.5,,0,0,14.0,Npm package,0.0
+134,October CMS,1,5.0,5.0,,0,0,14.0,October CMS,0.0
+135,OpenBSD,1,6.5,6.5,,0,0,21.0,OpenBSD,0.0
+128,North Grid,1,5.0,5.0,,0,0,21.0,North Grid,0.0
+129,Nostromo,1,6.5,6.5,,0,0,21.0,Nostromo,0.0
+142,PHPUnit,1,6.5,6.5,,0,0,181.0,PHPUnit,0.0
+141,PHP Group,1,8.5,8.5,,1,1,21.0,PHP Group,100.0
+147,Perl,1,5.0,5.0,,0,0,14.0,Perl,0.0
+148,Pi-hole,1,7.5,7.5,,0,0,182.0,Pi-hole,0.0
+198,Sumavision,1,6.0,6.0,,0,0,181.0,Sumavision,0.0
+199,Sunhillo,1,5.0,5.0,,0,0,21.0,Sunhillo,0.0
+200,Symantec,1,7.5,7.5,,0,0,181.0,Symantec,0.0
+197,SugarCRM,1,6.5,6.5,,0,0,21.0,SugarCRM,0.0
+195,Srimax,1,5.0,5.0,,0,0,21.0,Srimax,0.0
+194,Spreadsheet::ParseExcel,1,6.5,6.5,,0,0,21.0,Spreadsheet::ParseExcel,0.0
+219,Ubiquiti,1,5.0,5.0,,0,0,21.0,Ubiquiti,0.0
+218,Twilio,1,5.0,5.0,,0,0,21.0,Twilio,0.0
+217,Trimble,1,6.5,6.5,,0,0,21.0,Trimble,0.0
+216,Trihedral,1,5.0,5.0,,0,0,21.0,Trihedral,0.0
+214,Treck TCP/IP stack,1,5.0,5.0,,0,0,14.0,Treck TCP/IP stack,0.0
+212,TerraMaster,1,9.5,9.5,,1,1,21.0,TerraMaster,100.0
+205,TVT,1,5.0,5.0,,0,0,181.0,TVT,0.0
+208,Teclib,1,6.5,6.5,,0,0,21.0,Teclib,0.0
+206,TeamT5,1,7.5,7.5,,0,0,21.0,TeamT5,0.0
+207,TeamViewer,1,5.5,5.5,,0,0,181.0,TeamViewer,0.0
+188,SolarView,1,5.0,5.0,,0,0,21.0,SolarView,0.0
+190,Soliton Systems K.K,1,5.0,5.0,,0,0,21.0,Soliton Systems K.K,0.0
+227,Vite,1,5.0,5.0,,0,0,21.0,Vite,0.0
+220,Unitronics,1,6.5,6.5,,0,0,7.0,Unitronics,0.0
+230,Wazuh,1,6.5,6.5,,0,0,21.0,Wazuh,0.0
+228,WSO2,1,9.5,9.5,,1,1,21.0,WSO2,100.0
+234,Wing FTP Server,1,7.5,7.5,,0,0,21.0,Wing FTP Server,0.0
+233,Webmin,1,5.0,5.0,,0,0,21.0,Webmin,0.0
+232,WebRTC,1,8.0,8.0,,1,1,21.0,WebRTC,100.0
+231,WebKitGTK,1,6.5,6.5,,0,0,21.0,WebKitGTK,0.0
+239,Yiiframework,1,6.5,6.5,,0,0,21.0,Yiiframework,0.0
+238,Yealink,1,6.5,6.5,,0,0,14.0,Yealink,0.0
+236,XStream,1,6.5,6.5,,0,0,21.0,XStream,0.0
+237,XWiki,1,6.5,6.5,,0,0,21.0,XWiki,0.0
+240,ZK Framework,1,8.0,8.0,,1,1,21.0,ZK Framework,100.0
+241,ZKTeco,1,5.0,5.0,,0,0,21.0,ZKTeco,0.0
+246,ownCloud,1,5.0,5.0,,0,0,21.0,ownCloud,0.0
+245,dotCMS,1,9.5,9.5,,1,1,21.0,dotCMS,100.0
+247,phpMyAdmin,1,5.0,5.0,,0,0,21.0,phpMyAdmin,0.0
+248,rConfig,1,6.5,6.5,,0,0,181.0,rConfig,0.0
+249,reviewdog,1,5.0,5.0,,0,0,21.0,reviewdog,0.0
+250,tj-actions,1,5.0,5.0,,0,0,21.0,tj-actions,0.0
