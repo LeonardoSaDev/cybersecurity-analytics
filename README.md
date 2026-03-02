@@ -105,7 +105,7 @@ python -m pip install --upgrade pip
 python src/etl_pipeline.py
 
 # Rodar Dashboard
-streamlit run src/dashboard.py
+streamlit run src/dashboard.py 
 ```
 
 ### Suporte
