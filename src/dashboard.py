@@ -62,7 +62,7 @@ def load_gold_data():
 # ============================================
 # SIDEBAR - CONTROLES E FILTROS
 # ============================================
-st.sidebar.image("https://www.cisa.gov/sites/default/files/images/CISA_Logo_183x133.png", width=200)
+st.sidebar.image("src/header_logo_tagline_update.svg", width=200)
 st.sidebar.title("🔐 CISA KEV Dashboard")
 st.sidebar.markdown("---")
 
